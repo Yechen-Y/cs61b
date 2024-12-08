@@ -1,6 +1,6 @@
 public class LinkedListDeque<T> {
     /*结点类*/
-    public class IntNode{
+    private class IntNode{
         /**
          * 有前结点、后结点、结点储存的值
          */
@@ -20,7 +20,7 @@ public class LinkedListDeque<T> {
      */
     private IntNode sentFront;
     private IntNode sentBack;
-    public int size;
+    private int size;
 
 
     /**

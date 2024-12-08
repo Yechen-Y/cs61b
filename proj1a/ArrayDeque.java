@@ -1,8 +1,8 @@
 public class ArrayDeque<T> {
-    public int size;
-    public int nextFirst;
-    public int nextLast;
-    public T[] items;
+    private int size;
+    private int nextFirst;
+    private int nextLast;
+    private T[] items;
 
     public ArrayDeque(){
         size = 0;
@@ -46,7 +46,7 @@ public class ArrayDeque<T> {
         }
     }
 
-    public boolean isFull() {
+    private boolean isFull() {
         if (size == items.length) {
             return true;
         } else {
@@ -54,7 +54,7 @@ public class ArrayDeque<T> {
         }
     }
     // resizing 后应该调整nextFirst和nextLast
-    public void resizing() {
+    private void resizing() {
         T[] a = (T[]) new Object[size * 2];
         for (int i = nextLast, j = 0; i < items.length; i++, j++) {
             a[j] = items[i];
@@ -96,6 +96,7 @@ public class ArrayDeque<T> {
 
     public T removeFirst() {
         T temp;
+        size -= 1;
         if (nextFirst + 1 > items.length) {
             nextFirst = 0;
         } else {
@@ -108,6 +109,7 @@ public class ArrayDeque<T> {
 
     public T removeLast() {
         T temp;
+        size -= 1;
         if (nextLast - 1 > 0){
             nextLast = items.length - 1;
         } else {
