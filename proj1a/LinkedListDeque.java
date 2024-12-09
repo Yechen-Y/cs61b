@@ -23,25 +23,25 @@ public class LinkedListDeque<T> {
     private int size;
 
 
-    /**
-     * DLList的构造函数，构造非空链表
-     * @param item 第一个结点储存的值
-     * @param size 链表的大小设置为1
-     */
-    public LinkedListDeque(T item){
-        size = 1;
-        sentFront = new IntNode(null,null, null);
-        sentBack = new IntNode(null,null, null);
-
-        IntNode first = new IntNode(sentFront, item, sentBack);
-        sentFront.next = first;
-        sentBack.pre = first;
-    }
+//    /**
+//     * DLList的构造函数，构造非空链表
+//     * @param item 第一个结点储存的值
+//     * @param size 链表的大小设置为1
+//     */
+//    public LinkedListDeque(T item){
+//        size = 1;
+//        sentFront = new IntNode(null, null, null);
+//        sentBack = new IntNode(null, null, null);
+//
+//        IntNode first = new IntNode(sentFront, item, sentBack);
+//        sentFront.next = first;
+//        sentBack.pre = first;
+//    }
 
     /**
      * DLList的构造函数，构造空链表，前哨兵和哨兵互相引用
      */
-    public LinkedListDeque(){
+    public LinkedListDeque() {
         size = 0;
         sentFront = new IntNode(null,null, null);
         sentBack = new IntNode(null,null, null);
@@ -54,7 +54,7 @@ public class LinkedListDeque<T> {
      * 增加一个结点到DLList第一个位置（前哨兵前面），同时链表的size加一
      * @param item 增加到最前面结点的值
      */
-    public void addFirst(T item){
+    public void addFirst(T item) {
         size += 1;
         IntNode first = new IntNode(sentFront, item, sentFront.next);
         sentFront.next.pre = first;
@@ -65,7 +65,7 @@ public class LinkedListDeque<T> {
      * 增加一个结点到DLList的最后一个位置（后哨兵前面），同时链表的size加一
      * @param item 增加结点的值
      */
-    public void addLast(T item){
+    public void addLast(T item) {
         size += 1;
         IntNode last = new IntNode(sentBack.pre, item, sentBack);
         sentBack.pre.next = last;
@@ -76,29 +76,24 @@ public class LinkedListDeque<T> {
      * 检查链表是否为空链表
      * @return boolean 若链表为空则返回true，反之
      */
-    public boolean isEmpty(){
-        if (size == 0){
-            return true;
-        }else{
-            return false;
-        }
+    public boolean isEmpty() {
+        return size == 0;
     }
 
     /**
      * 返回DLList的大小
      * @return size DLList的大小
      */
-    public int size(){
+    public int size() {
         return size;
     }
 
     /**
      * 打印链表中每个结点的值 并以空格分开
-     * @param ptr 为IntNode，作为辅助指针
      */
-    public void printDeque(){
+    public void printDeque() {
         IntNode ptr = sentFront;
-        while (ptr.next != sentBack){
+        while (ptr.next != sentBack) {
             System.out.print(ptr.next.item);
             System.out.print(" ");
             ptr = ptr.next;
@@ -110,10 +105,10 @@ public class LinkedListDeque<T> {
      * @return 删除结点的值
      */
     /* 被删除的结点要被回收 */
-    public T removeFirst(){
-        if (isEmpty()){
+    public T removeFirst() {
+        if (isEmpty()) {
             return null;
-        }else{
+        } else {
             T result = sentFront.next.item;
             size -= 1;
             sentFront.next = sentFront.next.next;
@@ -126,10 +121,10 @@ public class LinkedListDeque<T> {
      * 删除DLList的最后一个结点，并返回其值，如果不存在则返回null
      * @return 删除结点的值
      */
-    public T removeLast(){
-        if (isEmpty()){
+    public T removeLast() {
+        if (isEmpty()) {
             return null;
-        }else{
+        } else {
             T result = sentBack.pre.item;
             size -= 1;
             sentBack.pre = sentBack.pre.pre;
@@ -143,12 +138,12 @@ public class LinkedListDeque<T> {
      * @param index 获取index位置的结点
      * @return 返回该位置结点的值
      */
-    public T get(int index){
-        if (index > size - 1){
+    public T get(int index) {
+        if (index > size - 1) {
             return null;
         }else{
             IntNode ptr = sentFront;
-            while (index >= 0){
+            while (index >= 0) {
                 index -= 1;
                 ptr = ptr.next;
             }
@@ -161,10 +156,10 @@ public class LinkedListDeque<T> {
      * @param index 获取index位置的结点
      * @return 该结点的值
      */
-    public T getRecursive(int index){
-        if (index > size -1){
+    public T getRecursive(int index) {
+        if (index > size -1) {
             return null;
-        }else{
+        } else {
             return getRecursive_help(index, sentFront.next);
         }
     }
@@ -175,10 +170,10 @@ public class LinkedListDeque<T> {
      * @param i 辅助结点
      * @return 结点的值
      */
-    private T getRecursive_help(int index, IntNode i){
-        if (index == 0){
+    private T getRecursive_help(int index, IntNode i) {
+        if (index == 0) {
             return i.item;
-        }else{
+        } else {
             return getRecursive_help(index - 1, i.next);
         }
     }

@@ -15,5 +15,11 @@ public class ArrayDequeTest {
         a.addLast(7);
         a.addLast(8);
         a.addFirst(9);
+        a.addLast(10);
+        a.addFirst(11);
+
+        for (int i = 0; i < 9; i++) {
+            a.removeLast();
+        }
     }
 }
