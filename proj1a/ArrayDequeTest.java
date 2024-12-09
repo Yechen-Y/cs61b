@@ -5,7 +5,7 @@ import org.junit.Test;
 public class ArrayDequeTest {
 
     @Test
-    public void testArrayDeque(){
+    public void testArrayDeque() {
         ArrayDeque<Integer> a = new ArrayDeque();
         a.addFirst(1);
         a.addFirst(2);

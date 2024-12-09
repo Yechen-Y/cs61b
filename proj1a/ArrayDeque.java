@@ -20,7 +20,7 @@ public class ArrayDeque<T> {
         }
     }
 
-    private int plusOne (int index) {
+    private int plusOne(int index) {
         if (index == items.length - 1) {
             return 0;
         } else {
@@ -95,7 +95,10 @@ public class ArrayDeque<T> {
 
     public T removeFirst() {
         T temp;
-        if (items.length > 16 && items.length / size > 4){
+        if (size ==0) {
+            return null;
+        }
+        if (items.length > 16 && items.length / size > 4) {
             shrink();
         }
         nextFirst = plusOne(nextFirst);
@@ -107,7 +110,10 @@ public class ArrayDeque<T> {
 
     public T removeLast() {
         T temp;
-        if (items.length >= 16 && items.length / size > 4){
+        if (size == 0) {
+            return null;
+        }
+        if (items.length >= 16 && items.length / size > 4) {
             shrink();
         }
         nextLast = minusOne(nextLast);

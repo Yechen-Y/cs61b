@@ -4,9 +4,9 @@ public class LinkedListDeque<T> {
         /**
          * 有前结点、后结点、结点储存的值
          */
-        public IntNode pre;
-        public IntNode next;
-        public T item;
+        private IntNode pre;
+        private IntNode next;
+        private T item;
 
         public IntNode(IntNode pre, T item, IntNode next) {
             this.pre = pre;
@@ -43,8 +43,8 @@ public class LinkedListDeque<T> {
      */
     public LinkedListDeque() {
         size = 0;
-        sentFront = new IntNode(null,null, null);
-        sentBack = new IntNode(null,null, null);
+        sentFront = new IntNode(null, null, null);
+        sentBack = new IntNode(null, null, null);
 
         sentFront.next = sentBack;
         sentBack.pre = sentFront;
@@ -141,7 +141,7 @@ public class LinkedListDeque<T> {
     public T get(int index) {
         if (index > size - 1) {
             return null;
-        }else{
+        } else {
             IntNode ptr = sentFront;
             while (index >= 0) {
                 index -= 1;
@@ -157,10 +157,10 @@ public class LinkedListDeque<T> {
      * @return 该结点的值
      */
     public T getRecursive(int index) {
-        if (index > size -1) {
+        if (index > size - 1) {
             return null;
         } else {
-            return getRecursive_help(index, sentFront.next);
+            return getRecursiveHelp(index, sentFront.next);
         }
     }
 
@@ -170,11 +170,11 @@ public class LinkedListDeque<T> {
      * @param i 辅助结点
      * @return 结点的值
      */
-    private T getRecursive_help(int index, IntNode i) {
+    private T getRecursiveHelp(int index, IntNode i) {
         if (index == 0) {
             return i.item;
         } else {
-            return getRecursive_help(index - 1, i.next);
+            return getRecursiveHelp(index - 1, i.next);
         }
     }
 }
