@@ -95,7 +95,7 @@ public class ArrayDeque<T> {
 
     public T removeFirst() {
         T temp;
-        if (size ==0) {
+        if (size == 0) {
             return null;
         }
         if (items.length > 16 && items.length / size > 4) {

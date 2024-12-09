@@ -1,6 +1,6 @@
 public class LinkedListDeque<T> {
     /*结点类*/
-    private class IntNode{
+    private class IntNode {
         /**
          * 有前结点、后结点、结点储存的值
          */
