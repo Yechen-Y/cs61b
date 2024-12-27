@@ -9,7 +9,7 @@ public class Percolation {
     private int[] openGrid;
 
     //将顶部和底部链接
-    private void setStartAndEnd (WeightedQuickUnionUF p) {
+    private void setStartAndEnd(WeightedQuickUnionUF p) {
         for (int index = 0; index < size; index += 1) {
             p.union(0, countIndex(0, index));
         }
@@ -33,7 +33,7 @@ public class Percolation {
         openSite = 0;
     }
 
-    private int countIndex (int x, int y) {
+    private int countIndex(int x, int y) {
         return x * size + y;
     }
 
@@ -55,7 +55,7 @@ public class Percolation {
     }
 
     //open的辅助函数 用于连接四周格子
-    private void openHelper (int row, int col) {
+    private void openHelper(int row, int col) {
         int midIndex = countIndex(row, col);
         if (col + 1 < size) {
             openHelperHelper(row, col + 1, midIndex);
@@ -71,7 +71,7 @@ public class Percolation {
         }
     }
 
-    private void openHelperHelper (int row, int col, int midIndex) {
+    private void openHelperHelper(int row, int col, int midIndex) {
         int index = countIndex(row, col);
         if (isOpen(row, col)) {
             grid.union(midIndex, index);
@@ -103,5 +103,10 @@ public class Percolation {
     // number of open sites
     public int numberOfOpenSites() {
         return openSite;
+    }
+
+//    private
+    public static void main(String[] args) {
+
     }
 }

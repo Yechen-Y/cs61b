@@ -11,7 +11,7 @@ public class PercolationStats {
     private int times;
 
     // perform T independent experiments on an N-by-N grid
-    public PercolationStats (int N, int T, PercolationFactory pf) {
+    public PercolationStats(int N, int T, PercolationFactory pf) {
         if (N <= 0 || T <= 0) {
             throw new IllegalArgumentException("illegal argument exception");
         }
@@ -25,7 +25,7 @@ public class PercolationStats {
         }
     }
 
-    private void doExperiment (int index) {
+    private void doExperiment(int index) {
         Percolation system = systemMake.make(side);
         while (!system.percolates()) {
             system.open(StdRandom.uniform(side), StdRandom.uniform(side));
