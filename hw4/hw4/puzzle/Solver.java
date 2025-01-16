@@ -60,9 +60,10 @@ public class Solver {
         List<WorldState> sol = new ArrayList<>();
         tempArray = new ArrayList<>();
         tomove = moves();
+        SearchNode temp = pre;
         for (int i = tomove; i >= 0; i -= 1) {
-            tempArray.add(pre.state);
-            pre = pre.previousNode;
+            tempArray.add(temp.state);
+            temp = temp.previousNode;
         }
         for (int i = tomove; i >= 0; i -= 1) {
             sol.add(tempArray.get(i));
